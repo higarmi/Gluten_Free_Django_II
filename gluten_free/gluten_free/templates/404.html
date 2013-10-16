@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% comment %} Enter your comment here ... {% endcomment %}
+
+{% block title %} 404 {% endblock %}
+
+{% block head %} 
+	<h1>Recipes: </h1>
+{% endblock %}
+
+{% block body %}
+  <h1>Sorry, we did not find matches for your search : </h1>
+  <p>
+  	<img src='{{STATIC_URL}}img/kernel.jpg'>
+  </p>
+{% endblock %}

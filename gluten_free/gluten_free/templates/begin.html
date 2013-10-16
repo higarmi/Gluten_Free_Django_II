@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% comment %} Your Comments {% endcomment %}
+
+{% block title %} Start {% endblock %}
+
+{% block head %} 
+	<h1>Recipes: </h1>
+{% endblock %}
+
+{% block body %}
+  <p>
+	  We have a total of: 
+     {% with total=recipes.count %} 
+		{{total}} recipe{{total|pluralize}}
+	 {% endwith %}
+  </p><p> Check them in our  <a href="/recipes"><u><b>recipes</b></u></a></b>  page</p>
+	<ul>		
+	  {% for dato in recipes %}
+	  <li class="{% cycle 'impar' 'par' %}">{{dato.title|title}}</li>
+	  {% empty %}
+	  <li>No recipes found. Add yours...</li>
+	  {% endfor %}
+	</ul>
+{% endblock %}

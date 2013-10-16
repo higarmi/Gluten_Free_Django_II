@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} {{recipe.title}} {% endblock %}
+
+{% block head %} 
+  <h1>{{recipe.title|title}}</h1>
+{% endblock %}
+
+{% block body %}
+	<div id='ingredients'>
+		<h2>Ingredients</h2>
+		<p>{{recipe.ingredients}}</p>
+	</div>
+	<div id='directions'>
+		<h2>Directions</h2>
+		<p>{{recipe.directions}}</p>
+	</div>
+	<div id='reference'>
+		<img src='{{MEDIA_URL}}{{recipe.image}}'>
+	</div>
+	<div id='comments'>
+		<h2>Comments</h2>
+			{% for item in comments %}
+				<p>{{item.texto}}</p>
+			{% empty %}
+				<p>None</p>
+			{% endfor %}
+	</div>
+	<footer>
+	  <p>Posted on {{ recipe.post_time|date:'SHORT_DATETIME_FORMAT' }} by {{recipe.user}}</p>
+	</footer>
+{% endblock %}

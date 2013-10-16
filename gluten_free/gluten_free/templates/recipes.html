@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %} Posted Recipes {% endblock %}
+
+{% block css %}
+  <style>
+	img { width:100px; }
+  </style>
+{% endblock %}
+
+
+{% block head %}
+  <h1>Our recipes</h1>
+{% endblock %}
+
+{% block body %}
+<b>
+<a href="/recipe/new"><u>Add a Recipe> </u></a></b>
+
+<ul>
+	{% for dato in datos %}
+	<li>
+		<a href='{% url "main.views.detail_recipe" dato.id %}'>{{dato.title}}</a>
+		<!--<img src='{{MEDIA_URL}}{{dato.image}}'> -->
+	</li>
+	{% empty %}
+	<li>No recipes posted</li>
+	{% endfor %}
+</ul>
+{% endblock %}
